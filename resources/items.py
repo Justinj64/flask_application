@@ -48,7 +48,7 @@ class ItemInsert(Resource):
         except:
             return {"message": "An error occurred inserting the item."}, 500
         # call to celery task
-        file_task = update_row.apply_async((item.json(),), exchange=Config.ENCHANGE_NAME, routing_key=Config.ITEM_ROUTING_KEY)
+        file_task = update_row.apply_async((item.json(),), exchange=Config.EXCHANGE_NAME, routing_key=Config.ITEM_ROUTING_KEY)
         return item.json(), 202
 
 
