@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "e73d1d07-5d59-4388-9105-f9731b4ac821",
+		"name": "FlaskApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Initialization Api",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDMyNjAyNjMsImlhdCI6MTYwMzI1OTk2MywibmJmIjoxNjAzMjU5OTYzLCJpZGVudGl0eSI6MX0.TaFNdSdstt0Ug4iZeNxBXP8AflWyc9ntpa_x5860u0U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Init api to set db"
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve all items in Db",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDMyNjAyNjMsImlhdCI6MTYwMzI1OTk2MywibmJmIjoxNjAzMjU5OTYzLCJpZGVudGl0eSI6MX0.TaFNdSdstt0Ug4iZeNxBXP8AflWyc9ntpa_x5860u0U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create item",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"item\":\"book\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve single item",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MDMyNjAyNjMsImlhdCI6MTYwMzI1OTk2MywibmJmIjoxNjAzMjU5OTYzLCJpZGVudGl0eSI6MX0.TaFNdSdstt0Ug4iZeNxBXP8AflWyc9ntpa_x5860u0U",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:5000/item/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"item",
+						"1"
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Fetches a particular item with the requested id in url"
+			},
+			"response": []
+		},
+		{
+			"name": "Update item",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"item\":\"book\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/item/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"item",
+						"1"
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Update item for the given id in the url"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete item",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/item/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"item",
+						"1"
+					],
+					"query": [
+						{
+							"key": "recordtype",
+							"value": "A",
+							"disabled": true
+						},
+						{
+							"key": "apikey",
+							"value": "yourapikey",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Deletes item with the given id in url"
+			},
+			"response": []
+		}
+	]
+}

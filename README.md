@@ -1,11 +1,12 @@
 # Flask Application with SqlAchemy | Sqlite3, Celery + RabbitMQ
 
 ## Tested on:
+
 Windows 10
-
 Python 3.8
-
+Celery 5.0.5
 RabbitMq 3.8.9
+
 ## Installation
 
 1) Install RabbitMQ from the link given below
@@ -22,7 +23,7 @@ RabbitMq 3.8.9
   
     sudo rabbitmqctl set_permissions -p sample_host username ".*" ".*" ".*"
    ```
-3) Make credential and other respective changes in .env file present at root.
+3) Make credential and other respective changes in **.env** file present at root.
 
 4) Create Virtual Environment.
 
@@ -31,7 +32,7 @@ RabbitMq 3.8.9
 
    .\env\Scripts\activate
     ```
-5) Install requirements.txt file from inside virtual enviroment 
+5) Install requirements.txt file from activated virtual environment.
 
    ```pip install -r requirements.txt ```
 
@@ -39,7 +40,7 @@ RabbitMq 3.8.9
    ```
     celery -A app.celery worker --loglevel=info -P gevent
    ```
-    As I was on Windows I had to pass the gevent argument as celery does not support windows 4.0+       
+    As I initially tested on Windows I had to pass the gevent argument as celery(4.0+) is not supported on windows
     (https://docs.celeryproject.org/en/stable/faq.html#windows) and it 
     leads to conflict at times.
 
@@ -47,3 +48,10 @@ RabbitMq 3.8.9
    ``` 
     python app.py
    ```
+
+## Usage
+1) Import the Postman collection as it  contains all the necessary API endpoints.
+2) Make sure variables are set in the .env file
+3) Configuration for Exchange and queues are set in **queues.py**.
+## Notes
+Schema for the table and its attributes is handled in the code itself. Once the initialization request is hit (refer postman collection), a file 'data.db' will be created, which will act as a SQLite engine.
