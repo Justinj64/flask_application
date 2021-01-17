@@ -1,7 +1,7 @@
 from config import Config
 from kombu import Exchange, Queue
 
-## configure queue and exchanges
+# configure queue and exchanges
 exchange_name = Config.ENCHANGE_NAME
 item_queue_name = Config.ITEM_QUEUE_NAME
 item_routing_key = Config.ITEM_ROUTING_KEY

@@ -2,7 +2,8 @@ from app import app, celery
 from models.item import ItemModel
 from db import db
 
-## celery task for updating status
+
+# celery task for updating status
 @celery.task(name='tasks.update_row')
 def update_row(data):
     db.init_app(app)

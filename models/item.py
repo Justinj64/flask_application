@@ -1,18 +1,19 @@
 import sqlite3
 from db import db
 
-## itemModel class to bridge sql schema
+
+# itemModel class to bridge sql schema
 class ItemModel(db.Model):
     __tablename__ = "items"
     id = db.Column(db.Integer, primary_key=True)
     status = db.Column(db.String(20), default="pending")
     item = db.Column(db.String(20))
 
-    def __init__(self,item):
+    def __init__(self, item):
         self.item = item
         
     def json(self):
-        return {"id":self.id,"item":self.item,"status":self.status} 
+        return {"id": self.id, "item": self.item, "status": self.status}
 
     @classmethod
     def find_by_id(cls,id):
@@ -33,5 +34,3 @@ class ItemModel(db.Model):
     def del_from_db(self):
         db.session.delete(self)
         db.session.commit()
-
-     
