@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+import json
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir, '.env'))
@@ -13,5 +14,7 @@ class Config(object):
     EXCHANGE_TYPE = os.environ.get('ENCHANGE_TYPE')
     ITEM_ROUTING_KEY = os.environ.get('ITEM_ROUTING_KEY')
     ITEM_QUEUE_NAME = os.environ.get('ITEM_QUEUE_NAME')
-
-
+    TASK_FILES = json.loads(os.environ.get('TASK_FILES'))
+    TASK_SERIALIZER=os.environ.get('TASK_SERIALIZER')
+    RESULT_SERIALIZER=os.environ.get('RESULT_SERIALIZER')
+    ACCEPT_CONTENT=json.loads(os.environ.get('ACCEPT_CONTENT'))

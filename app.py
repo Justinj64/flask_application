@@ -17,11 +17,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = Config.SQLALCHEMY_TRACK_MODIFICAT
 app.config['CELERY_BROKER_URL'] = Config.CELERY_BROKER_URL
 app.config['CELERY_RESULT_BACKEND'] = Config.CELERY_RESULT_BACKEND
 
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'],include = ['tasks'])
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'],include = Config.TASK_FILES)
 celery.conf.update(
-    task_serializer = 'pickle',
-    result_serializer = 'pickle',
-    accept_content = {'pickle'},
+    task_serializer = Config.TASK_SERIALIZER,
+    result_serializer = Config.RESULT_SERIALIZER,
+    accept_content = Config.ACCEPT_CONTENT,
 )
 celery.conf.task_queues = (task_queues)
 
