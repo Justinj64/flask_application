@@ -1,16 +1,17 @@
-# Flask Application with SqlAchemy | Sqlite3, Celery + RabbitMQ
+# Flask Application with RabbitMQ + Celery and  Sqlite3
 
 ## Tested on:
-   Windows 10 | Ubuntu 18.04
-   Python 3.8
-   Celery 5.0.5
-   RabbitMq 3.8.9
+   Windows 10 | Ubuntu 18.04  
+   Python 3.8  
+   Celery 5.0.5  
+   RabbitMq 3.8.9  
 
 ## Installation
 
 1) Install RabbitMQ from the link given below
 
    https://www.rabbitmq.com/download.html
+
 
 2) Configure RabbitMQ for Celery
    ```
@@ -22,32 +23,43 @@
   
     sudo rabbitmqctl set_permissions -p sample_host username ".*" ".*" ".*"
    ```
+
 3) Make credential and other respective changes in **.env** file present at root.
+
 
 4) Create Virtual Environment.
 
     ```
      python3 -m venv env
 
-     .\env\Scripts\activate
+     .\env\Scripts\activate                                 (Windows) 
+
+     . env/bin/activate                                     (Ubuntu)
      ```
+
 5) Install requirements.txt file from activated virtual environment.
 
      ```
-     pip install -r requirements.txt
+     pip3 install -r requirements.txt
+     ```
+
+    **Note** : If executing on Windows Machine, uncomment gevent and greenlet in **requirements.txt**.
+
 6) Ensure rabbitMQ is working and start celery worker.
    ```
     celery -A app.celery worker --loglevel=info -P gevent   (Windows)
 
     celery -A app.celery worker --loglevel=info             (Ubuntu)
    ```
+
     As I initially tested on Windows I had to pass the gevent argument as celery(4.0+) is not supported on windows
     (https://docs.celeryproject.org/en/stable/faq.html#windows) and it 
     leads to conflict at times.
 
+
 7) Once celery is up and running , on a new console , execute:
    ``` 
-    python app.py
+    python3 app.py
    ```
 
 ## Usage
